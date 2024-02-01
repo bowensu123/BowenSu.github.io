@@ -38,12 +38,11 @@
         
 
     </main>
-     <script src="bubbleCursor.js" defer></script> 
+    <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js" defer></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        // 初始化并启用动态效果
-        bubbleCursor();
-      });
+        window.addEventListener("load", (event) => {
+          new cursoreffects.bubbleCursor();
+        });
     </script>
 
 
