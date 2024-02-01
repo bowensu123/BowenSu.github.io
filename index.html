@@ -9,6 +9,7 @@
     <!-- <link rel="stylesheet" href="https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.css"> -->
     <!-- Fluid Simulation CSS -->
     <style>
+        
         body {
             margin: 0;
             overflow: hidden;
@@ -20,6 +21,24 @@
             padding: 10px;
             margin: 5px;
             font-size: 16px;
+        }
+    </style>
+       <style>
+        /* 设置Canvas的样式 */
+        #fluidSimulationCanvas {
+            position: bottom;
+            bottom: 0; /* 将Canvas定位到底部 */
+            left: 0; /* 左边距为0，使其充满整个宽度 */
+            width: 100%; /* 设置Canvas宽度为100%以充满容器 */
+            height: auto; /* 自动调整高度，以保持宽高比 */
+            border: 10px solid; /* 为Canvas添加边框 */
+        }
+    </style>
+    
+    <style>
+        /* 使用CSS选择器选中要改变字体大小的元素，并设置字体大小 */
+        .small-font {
+            font-size: 10px; /* 设置字体大小为12像素，可以根据需要调整 */
         }
     </style>
 </head>
@@ -35,20 +54,8 @@
             </ul>
         </nav>
     </header>
-    <!-- Fluid Simulation Canvas -->
-        <button class="button" onclick="setupScene(1)">Wind Tunnel</button>
-        <button class="button" onclick="setupScene(3)">Hires Tunnel</button>
-        <button class="button" onclick="setupScene(0)">Tank</button>
-        <button class="button" onclick="setupScene(2)">Paint</button>
-        <input type="checkbox" id="streamButton" onclick="scene.showStreamlines = !scene.showStreamlines">Streamlines
-        <input type="checkbox" id="velocityButton" onclick="scene.showVelocities = !scene.showVelocities">Velocities
-        <input type="checkbox" name="field" id="pressureButton" onclick="scene.showPressure = !scene.showPressure;"> Pressure
-        <input type="checkbox" name="field" id="smokeButton" onclick="scene.showSmoke = !scene.showSmoke;" checked>Smoke
-        <input type="checkbox" id="overrelaxButton" onclick="scene.overRelaxation = scene.overRelaxation == 1.0 ? 1.9 : 1.0" checked>Overrelax
-        <br>
-               
-    <!-- 添加流体模拟的Canvas -->
-    <canvas id="fluidSimulationCanvas" style="position: absolute; bottom: 33.33%; left: 33.33%; width: 33.33%; height: 33.33%; border: 2px solid;"></canvas>
+<!-- 这是你要移动到底部的内容 -->
+
     </main>
     
         <section id="about">
@@ -64,7 +71,24 @@
             <h2>Publications</h2>
             <p>TBD</p>
         </section>
- 
+            <div class="small-font">
+    <button class="button small-font" onclick="setupScene(1)">Wind Tunnel</button>
+    <button class="button small-font" onclick="setupScene(3)">Hires Tunnel</button>
+    <button class="button small-font" onclick="setupScene(0)">Tank</button>
+    <button class="button small-font" onclick="setupScene(2)">Paint</button>
+    <input type="checkbox" id="streamButton" class="small-font" onclick="scene.showStreamlines = !scene.showStreamlines">Streamlines
+    <input type="checkbox" id="velocityButton" class="small-font" onclick="scene.showVelocities = !scene.showVelocities">Velocities
+    <input type="checkbox" name="field" id="pressureButton" class="small-font" onclick="scene.showPressure = !scene.showPressure;"> Pressure
+    <input type="checkbox" name="field" id="smokeButton" class="small-font" onclick="scene.showSmoke = !scene.showSmoke;" checked>Smoke
+    <input type="checkbox" id="overrelaxButton" class="small-font" onclick="scene.overRelaxation = scene.overRelaxation == 1.0 ? 1.9 : 1.0" checked>Overrelax
+
+    </div>
+    <!-- <canvas id="fluidSimulationCanvas" style="position: absolute; bottom: 33.33%; left: 33.33%; width: 33.33%; height: 33.33%; border: 10px solid;"></canvas>    -->
+    <canvas id="fluidSimulationCanvas"></canvas>
+    <!-- 添加流体模拟的Canvas -->
+   
+
+    
     </main>
     <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js" defer></script>
     <script>
