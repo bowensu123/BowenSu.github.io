@@ -1,22 +1,35 @@
+/* 基本火焰样式 */
 .flame {
   position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: red;
   border-radius: 50%;
-  opacity: 0.8;
-  pointer-events: none; /* 确保火焰不会干扰页面上的其他元素 */
-  transition: transform 0.2s, opacity 0.5s; /* 平滑的移动和渐隐效果 */
+  opacity: 0.75;
+  pointer-events: none;
 }
 
-.flame::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: yellow;
-  border-radius: 50%;
-  transform: scale(0.5);
+/* 动画：火焰上升 */
+@keyframes rise {
+  0% { transform: translateY(0) scale(1); opacity: 0.75; }
+  100% { transform: translateY(-100px) scale(0.5); opacity: 0; }
 }
+
+/* 动画：火焰闪烁 */
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    opacity: 0.75;
+  }
+  20%, 24%, 55% {
+    opacity: 0.5;
+  }
+}
+
+/* 应用动画 */
+.flame-core {
+  animation: flicker 1.5s infinite, rise 4s ease-out forwards;
+  background-color: #FF6B6B; /* 火焰的内核颜色 */
+}
+
+.flame-outline {
+  animation: flicker 1.5s infinite, rise 4s ease-out forwards;
+  background-color: #FFD93D; /* 火焰的外层颜色 */
+}
+
