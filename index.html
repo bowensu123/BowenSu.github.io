@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bowen's Personal Homepage</title>
-    <link rel="stylesheet" href="style.css"> <!-- If you have a CSS file -->
-    <script src="script.js" defer></script> <!-- If you have a JavaScript file -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- Mouse Follower CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.css">
 </head>
 <body>
     <header>
@@ -39,7 +40,13 @@
     <footer>
         <p>&copy; 2024 Bowen. All rights reserved.</p>
     </footer>
+    <!-- <script src="script.js" defer></script> -->
+    <!-- Mouse Follower JS and initialization -->
+    <script src="https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        new MouseFollower();
+      });
+    </script>
 </body>
 </html>
-
-
