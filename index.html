@@ -78,7 +78,8 @@
     <input type="checkbox" name="field" id="pressureButton" class="small-font" onclick="scene.showPressure = !scene.showPressure;"> Pressure
     <input type="checkbox" name="field" id="smokeButton" class="small-font" onclick="scene.showSmoke = !scene.showSmoke;" checked>Smoke
     <input type="checkbox" id="overrelaxButton" class="small-font" onclick="scene.overRelaxation = scene.overRelaxation == 1.0 ? 1.9 : 1.0" checked>Overrelax
-    <section>
+      </div>
+    </section>
  
     <!-- <canvas id="fluidSimulationCanvas" style="position: absolute; bottom: 33.33%; left: 33.33%; width: 33.33%; height: 33.33%; border: 10px solid;"></canvas>    -->
     <canvas id="fluidSimulationCanvas"></canvas>
@@ -152,7 +153,7 @@
 			this.m.fill(1.0)
 			var num = numX * numY;
 		}
-
+		/*
 		integrate(dt, gravity) {
 			var n = this.numY;
 			for (var i = 1; i < this.numX; i++) {
@@ -161,7 +162,32 @@
 						this.v[i*n + j] += gravity * dt;
 				}	 
 			}
-		}
+		}*/
+		integrate(dt, gravity) {
+	    var n = this.numY;
+	
+	    // 定义一个辅助函数来计算速度的变化
+	    const dv = (velocity, dt, gravity) => gravity * dt;
+	
+	    for (var i = 1; i < this.numX; i++) {
+	        for (var j = 1; j < this.numY - 1; j++) {
+	            if (this.s[i*n + j] != 0.0 && this.s[i*n + j - 1] != 0.0) {
+	                // 当前速度
+	                let v0 = this.v[i*n + j];
+	
+	                // 计算四个斜率
+	                let k1 = dv(v0, dt * 0.5, gravity);
+	                let k2 = dv(v0 + k1 * 0.5, dt * 0.5, gravity);
+	                let k3 = dv(v0 + k2 * 0.5, dt * 0.5, gravity);
+	                let k4 = dv(v0 + k3, dt, gravity);
+	
+	                // 组合这些斜率来获得最终速度
+	                this.v[i*n + j] += (k1 + 2 * k2 + 2 * k3 + k4) / 6.0;
+	            }
+	        }
+	    }
+	}
+
 
 		solveIncompressibility(numIters, dt) {
 
@@ -319,7 +345,7 @@
 
 			var n = this.numY;
 			var h = this.h;
-			var h2 = 0.5 * h;
+			var h2 = 1.5 * h;
 
 			for (var i = 1; i < this.numX-1; i++) {
 				for (var j = 1; j < this.numY-1; j++) {
@@ -362,11 +388,11 @@
 		overRelaxation : 1.9,
 		obstacleX : 0.0,
 		obstacleY : 0.0,
-		obstacleRadius: 0.15,
+		obstacleRadius: 0.2,
 		paused: false,
 		sceneNr: 0,
 		showObstacle: false,
-		showStreamlines: false,
+		showStreamlines: true,
 		showVelocities: false,	
 		showPressure: false,
 		showSmoke: true,
@@ -818,9 +844,6 @@
 	
 	setupScene(1);
 	update();
-	
 </script> 
-
-
 </body>
 </html>
