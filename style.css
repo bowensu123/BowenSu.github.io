@@ -1,0 +1,22 @@
+.flame {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  opacity: 0.8;
+  pointer-events: none; /* 确保火焰不会干扰页面上的其他元素 */
+  transition: transform 0.2s, opacity 0.5s; /* 平滑的移动和渐隐效果 */
+}
+
+.flame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: yellow;
+  border-radius: 50%;
+  transform: scale(0.5);
+}
