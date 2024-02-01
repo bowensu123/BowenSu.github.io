@@ -16,7 +16,7 @@
                 <li><a href="#about">About Me</a></li>
                 <li><a href="#research">Research Interests</a></li>
                  <li><a href="#publication">Publications</a></li>
-                <li><a href="#contact">Contact</a></li>
+                
             </ul>
         </nav>
     </header>
@@ -40,31 +40,13 @@
     </main>
      <script src="bubbleCursor.js" defer></script> 
     <script>
-        bubbleCursor(); 
+      document.addEventListener("DOMContentLoaded", function() {
+        // 初始化并启用动态效果
+        bubbleCursor();
+      });
     </script>
-    <!-- <footer>
-        <p>&copy; 2024 Bowen. All rights reserved.</p>
-    </footer> 
- 
-   
-    <!-- Mouse Follower JS and initialization -->
-<!--
-<script src="https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        new MouseFollower({
-            speed: 0.5, // 控制速度
-            friction: 0.1, // 控制摩擦力
-            shape: 'circle', // 形状为圆形
-            zIndex: 9999, // 层级
-            opacity: 0.75, // 不透明度
-            blendMode: 'multiply', // 混合模式
-            color: '#ff0000', // 颜色
-            size: 55, // 尺寸
-        });
-    });
-</script>
--->
+
+
 
 </body>
 </html>
