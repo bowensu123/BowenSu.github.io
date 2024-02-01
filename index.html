@@ -44,9 +44,18 @@
     <!-- Mouse Follower JS and initialization -->
     <script src="https://unpkg.com/mouse-follower@1/dist/mouse-follower.min.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        new MouseFollower();
-      });
+        document.addEventListener("DOMContentLoaded", function() {
+            new MouseFollower({
+                speed: 2, // 控制速度
+                friction: 0.1, // 控制摩擦力
+                shape: 'circle', // 形状为圆形
+                zIndex: 9999, // 层级
+                opacity: 0.75, // 不透明度
+                blendMode: 'multiply', // 混合模式
+                color: '#ff0000', // 颜色
+                size: 5, // 尺寸
+               
+            });
     </script>
 </body>
 </html>
