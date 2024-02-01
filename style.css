@@ -61,9 +61,9 @@ h1 {
   font-family: papyrus;
   letter-spacing: 2px;
   padding-top: 50px;
-  text-shadow: 3px 3px 0 red, -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red,
-    1px 1px 0 red;
+  text-shadow: 3px 3px 5px #6eb5e5, -1px -1px 5px #6eb5e5, 1px -1px 5px #6eb5e5, -1px 1px 5px #6eb5e5, 1px 1px 5px #6eb5e5;
 }
+
 
 .wrapper {
   margin: 30px;
