@@ -12,7 +12,7 @@
         
         body {
             margin: 0;
-            overflow: hidden;
+            overflow: auto;
         }
         canvas {
             border: 2px solid;
@@ -25,14 +25,7 @@
     </style>
        <style>
         /* 设置Canvas的样式 */
-        #fluidSimulationCanvas {
-            position: bottom;
-            bottom: 0; /* 将Canvas定位到底部 */
-            left: 0; /* 左边距为0，使其充满整个宽度 */
-            width: 100%; /* 设置Canvas宽度为100%以充满容器 */
-            height: auto; /* 自动调整高度，以保持宽高比 */
-            border: 10px solid; /* 为Canvas添加边框 */
-        }
+
     </style>
     
     <style>
@@ -50,6 +43,7 @@
                 <li><a href="#about">About Me</a></li>
                 <li><a href="#research">Research Interests</a></li>
                  <li><a href="#publication">Publications</a></li>
+                 <li><a href="#fun">For Fun</a></li>
                 
             </ul>
         </nav>
@@ -73,7 +67,7 @@
         </section>
             <div class="small-font">
     <button class="button small-font" onclick="setupScene(1)">Wind Tunnel</button>
-    <button class="button small-font" onclick="setupScene(3)">Hires Tunnel</button>
+    <!-- <button class="button small-font" onclick="setupScene(3)">Hires Tunnel</button> -->
     <button class="button small-font" onclick="setupScene(0)">Tank</button>
     <button class="button small-font" onclick="setupScene(2)">Paint</button>
     <input type="checkbox" id="streamButton" class="small-font" onclick="scene.showStreamlines = !scene.showStreamlines">Streamlines
@@ -96,14 +90,29 @@
           new cursoreffects.bubbleCursor();
         });
     </script>
-<script>
+   
+    <script>
 
 	var canvas = document.getElementById("fluidSimulationCanvas");
 	var c = canvas.getContext("2d");	
-	canvas.width = window.innerWidth - 20;
-	canvas.height = window.innerHeight - 100;
+        // 动态调整canvas大小的函数
+        function resizeCanvas() {
+            // 设置canvas大小为视窗大小的一定比例，例如宽高各为窗口的66%
+            var sizeRatio = 0.5;
+            canvas.width = window.innerWidth * sizeRatio;
+            canvas.height = window.innerHeight * sizeRatio;
+                    // 调整canvas位置，使其在页面底部居中
+        canvas.style.position = 'auto';
+        canvas.style.left = '50%';
+        canvas.style.bottom = '0';
+        canvas.style.transform = 'translateX(50%)';
+        }
 
-	canvas.focus();
+        // 在窗口大小变化时调整canvas大小
+        window.addEventListener('resize', resizeCanvas, false);
+
+        // 页面加载时初始化canvas大小
+        resizeCanvas();
 
 	var simHeight = 1.1;	
 	var cScale = canvas.height / simHeight;
@@ -718,7 +727,7 @@
 
 	// interaction -------------------------------------------------------
 
-	var mouseDown = false;
+	var mouseDown = true;
 
 	function startDrag(x, y) {
 		let bounds = canvas.getBoundingClientRect();
