@@ -1,4 +1,3 @@
-//https://github.com/tholman/cursor-effects/blob/master/src/bubbleCursor.js
 export function bubbleCursor(options) {
   let hasWrapperEl = options && options.element;
   let element = hasWrapperEl || document.body;
@@ -58,9 +57,9 @@ export function bubbleCursor(options) {
 
   // Bind events that are needed
   function bindEvents() {
-    element.addEventListener("mousemove", onMouseMove);
-    element.addEventListener("touchmove", onTouchMove, { passive: true });
-    element.addEventListener("touchstart", onTouchMove, { passive: true });
+    document.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("touchmove", onTouchMove, { passive: true });
+    document.addEventListener("touchstart", onTouchMove, { passive: true });
     window.addEventListener("resize", onWindowResize);
   }
 
@@ -138,11 +137,11 @@ export function bubbleCursor(options) {
   function destroy() {
     canvas.remove();
     cancelAnimationFrame(animationFrame);
-    element.removeEventListener("mousemove", onMouseMove);
-    element.removeEventListener("touchmove", onTouchMove);
-    element.removeEventListener("touchstart", onTouchMove);
-    window.addEventListener("resize", onWindowResize);
-  };
+    document.removeEventListener("mousemove", onMouseMove);
+    document.removeEventListener("touchmove", onTouchMove);
+    document.removeEventListener("touchstart", onTouchMove);
+    window.removeEventListener("resize", onWindowResize);
+  }
 
   function Particle(x, y, canvasItem) {
     const lifeSpan = Math.floor(Math.random() * 60 + 60);
@@ -186,7 +185,6 @@ export function bubbleCursor(options) {
   }
 
   init();
-
 
   return {
     destroy: destroy
