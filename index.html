@@ -23,10 +23,8 @@
             font-size: 16px;
         }
     </style>
-       <style>
-        /* 设置Canvas的样式 */
 
-    </style>
+
     
     <style>
         /* 使用CSS选择器选中要改变字体大小的元素，并设置字体大小 */
@@ -62,18 +60,13 @@
             <h2>Research Interests</h2>
             <p>Computational data science; High performance computing</p>
         </section>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <section id="publication">
     <h2>Publications</h2>
     <ul>
         <li>
-            <strong>Bowen Su</strong>, Juntao You, HanQin Cai, Longxiu Huang. "Guaranteed Sampling Flexibility for
-            Low-tubal-rank Tensor Completion," To submit to Journal of the American Statistical Associations.
-            <ul>
-                <li>We generalize the matrix cross-concentrated sampling model to tensor setting, termed t-CCS.</li>
-                <li>We establish a sufficient condition for reliably recovering low-rank tensors from t-CCS samples. We develop a theoretical framework for t-CUR using uniform random sampling and adapt tensor-nuclear-norm based tensor completion with the Bernoulli sampling model, offering a deeper analysis of its constants.</li>
-                <li>We develop an efficient non-convex solver called Iterative Tensor CUR Completion (ITCURC) for the t-CCS-based TC problem. Specifically for a TC problem of size \(n_1 \times n_2 \times n_3\), the computational cost per iteration is merely \(\mathcal{O}(r|I|n_{2}n_{3}+r|J|n_{1}n_{3})\) provided \(|I|\ll n_1\), \(|J|\ll n_2\).</li>
-                <li>We demonstrate the flexibility of the t-CCS model in sampling and its corresponding algorithm's efficiency in accurately reconstructing low tubal-rank tensors, as evidenced by extensive tests on synthetic datasets. And we also demonstrate our algorithm can effectively balance runtime efficiency and quality of reconstruction, making it a viable choice for potential applications requiring such a trade-off, as evidenced by extensive numerical experiments on real-world datasets.</li>
-            </ul>
+		one paper is submitted for double blind revision.
         </li>
         <li>
             Zixiong Gao, Longxiu Huang, Haoyuan Ma, <strong>Bowen Su</strong>, Tao Wang, Xu Zhang, "Neural Network Compression via Iterative CUR Decompositions", submitted to Neural Networks.
@@ -438,13 +431,14 @@
 		scene.dt = 1.0 / 60.0;
 		scene.numIters = 40;
 
-		var res = 100;
+		var res = 500;
 		
 		if (sceneNr == 0)
-			res = 50;
+			//res = 50;
+			res = 500;
 		else if (sceneNr == 3)
-			res = 200;
-
+			//res = 200;
+			res = 500;
 		var domainHeight = 1.0;
 		var domainWidth = domainHeight / simHeight * simWidth;
 		var h = domainHeight / res;
