@@ -88,7 +88,7 @@
         </li>
     </ul>
 </section>
-
+/*
         <section id="fun">
             <h2>For Fun</h2>
             <div class="small-font">
@@ -868,6 +868,29 @@
 	
 	setupScene(1);
 	update();
-</script> 
+</script> */
+<div id="threejs-container"></div> <!-- 3D场景容器 -->
+
+   
+    <script>
+        // Three.js 3D场景代码
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('threejs-container').appendChild(renderer.domElement);
+        var geometry = new THREE.BoxGeometry();
+        var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        var cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+        function animate() {
+            requestAnimationFrame(animate);
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
 </body>
 </html>
