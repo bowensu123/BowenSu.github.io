@@ -63,30 +63,6 @@
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <section id="publication">
-    <h2>Publications</h2>
-    <ul>
-        <li>
-		One lengthy paper is not listed due to double-blind submission.
-        </li>
-        <li>
-            Zixiong Gao, Longxiu Huang, Haoyuan Ma, Bowen Su, Tao Wang, Xu Zhang, "Neural Network Compression via Iterative CUR Decompositions", submitted to Neural Networks.
-            <ul>
-                <li>We consider network compression method named ICURA based on CUR approximation.</li>
-                <li>To expedite the retraining process of ICURA, we leverage a mathematical theorem regarding the upper limit of error in CUR approximation. Inspired by this theorem, we have devised a rapid gradient approximation method for the estimated weight matrix in the context of backpropagation.</li>
-                <li>We evaluate ICURA across various datasets and network architectures, comparing its performance against state-of-the-art pruning and low-rank methods. Our results suggest that ICURA has the potential to strike a balance between speed and accuracy, outperforming these methods by preserving both high accuracy and rapid convergence.</li>
-            </ul>
-        </li>
-        <li>
-            HanQin Cai, Longxiu Huang, Chandra Kundu, and Bowen Su, 
-            "On the Robustness of Cross-Concentrated Sampling
-            for Matrix Completion", In Conference of Information Sciences and Systems (CISS), 2024.
-            <ul>
-                <li>We try to  answer to the robustness of the CCS model against sparse outliers by exploring a novel Robust CCS Completion problem.</li>
-                <li>We develop a highly efficient non-convex iterative algorithm, dubbed Robust CUR Completion (RCURC).</li>
-                <li>The empirical performance of the proposed algorithm, in terms of both efficiency and robustness, is verified in synthetic and real datasets.</li>
-            </ul>
-        </li>
-    </ul>
 </section>
 /*
         <section id="fun">
@@ -188,23 +164,19 @@
 		}*/
 		integrate(dt, gravity) {
 	    var n = this.numY;
-	
-	    // 定义一个辅助函数来计算速度的变化
+
 	    const dv = (velocity, dt, gravity) => gravity * dt;
 	
 	    for (var i = 1; i < this.numX; i++) {
 	        for (var j = 1; j < this.numY - 1; j++) {
 	            if (this.s[i*n + j] != 0.0 && this.s[i*n + j - 1] != 0.0) {
-	                // 当前速度
+
 	                let v0 = this.v[i*n + j];
-	
-	                // 计算四个斜率
+
 	                let k1 = dv(v0, dt * 0.5, gravity);
 	                let k2 = dv(v0 + k1 * 0.5, dt * 0.5, gravity);
 	                let k3 = dv(v0 + k2 * 0.5, dt * 0.5, gravity);
 	                let k4 = dv(v0 + k3, dt, gravity);
-	
-	                // 组合这些斜率来获得最终速度
 	                this.v[i*n + j] += (k1 + 2 * k2 + 2 * k3 + k4) / 6.0;
 	            }
 	        }
